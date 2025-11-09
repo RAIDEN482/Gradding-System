@@ -1,0 +1,75 @@
+#!/bin/bash
+
+echo "===== Student Grade System ====="
+
+while true
+do
+    echo ""
+    echo "1. Add Student"
+    echo "2. Calculate Average"
+    echo "3. Show Grade"
+    echo "4. Exit"
+    echo ""
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1)
+            read -p "Enter student name: " name
+            read -p "Enter marks in 3 subjects (separated by space): " m1 m2 m3
+
+            # Basic numeric check
+            if ! [[ "$m1" =~ ^[0-9]+$ && "$m2" =~ ^[0-9]+$ && "$m3" =~ ^[0-9]+$ ]]; then
+                echo "Invalid input! Please enter numeric marks."
+                continue
+            fi
+
+            total=$((m1 + m2 + m3))
+            avg=$((total / 3))
+
+            echo "Student: $name"
+            echo "Total Marks: $total"
+            echo "Average Marks: $avg"
+            ;;
+        2)
+            read -p "Enter total marks: " total
+
+            if ! [[ "$total" =~ ^[0-9]+$ ]]; then
+                echo "Invalid input! Please enter a numeric total."
+                continue
+            fi
+
+            avg=$((total / 3))
+            echo "Average Marks: $avg"
+            ;;
+        3)
+            read -p "Enter average marks: " avg
+
+            # Basic numeric check
+            if ! [[ "$avg" =~ ^[0-9]+$ ]]; then
+                echo "Invalid input! Please enter a numeric average."
+                continue
+            fi
+
+            if (( avg >= 80 )); then
+                echo "Grade: A+"
+            elif (( avg >= 70 )); then
+                echo "Grade: A"
+            elif (( avg >= 60 )); then
+                echo "Grade: B"
+            elif (( avg >= 50 )); then
+                echo "Grade: C"
+            elif (( avg >= 40 )); then
+                echo "Grade: D"
+            else
+                echo "Grade: F (Fail)"
+            fi
+            ;;
+        4)
+            echo "Exiting program. Goodbye!"
+            break
+            ;;
+        *)
+            echo "Invalid choice! Please try again."
+            ;;
+    esac
+done
