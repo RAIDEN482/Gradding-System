@@ -1,0 +1,83 @@
+#!/bin/bash
+
+echo " Welcome to the Student Grade System"
+echo "--------------------------------------"
+
+grades_file="grades.csv"
+
+# Create file with header if it doesn't exist
+if [ ! -f "$grades_file" ]; then
+    echo "Name,Sub1,Sub2,Sub3,Total,Average,Grade" > "$grades_file"
+fi
+
+while true
+do
+    echo ""
+    echo "1. Add Student"
+    echo "2. View All Students"
+    echo "3. Search Student"
+    echo "4. Exit"
+    echo ""
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1)
+            read -p "Enter student name: " name
+            read -p "Enter marks in 3 subjects (space-separated): " m1 m2 m3
+
+            total=$((m1 + m2 + m3))
+            avg=$((total / 3))
+
+            if (( avg >= 80 )); then
+                grade="A+"
+            elif (( avg >= 70 )); then
+                grade="A"
+            elif (( avg >= 60 )); then
+                grade="B"
+            elif (( avg >= 50 )); then
+                grade="C"
+            elif (( avg >= 40 )); then
+                grade="D"
+            else
+                grade="F (Fail)"
+            fi
+
+            # Save to CSV
+            echo "$name,$m1,$m2,$m3,$total,$avg,$grade" >> "$grades_file"
+
+            # Display as table
+            echo ""
+            echo " Student Grade Sheet"
+            printf "%-12s %-10s %-10s %-10s %-10s %-10s %-10s\n" "Name" "Sub1" "Sub2" "Sub3" "Total" "Average" "Grade"
+            printf "%-12s %-10s %-10s %-10s %-10s %-10s %-10s\n" "$name" "$m1" "$m2" "$m3" "$total" "$avg" "$grade"
+            ;;
+        2)
+            read -s -p " Enter admin password: " pass
+            echo ""
+            if [ "$pass" == "1234" ]; then
+                echo " All Student Records"
+                column -s, -t "$grades_file"
+            else
+                echo " Incorrect password"
+            fi
+            ;;
+        3)
+            read -s -p " Enter admin password: " pass
+            echo ""
+            if [ "$pass" == "1234" ]; then
+                read -p "Enter student name to search: " search_name
+                echo " Result:"
+                grep -i "$search_name" "$grades_file" | column -s, -t
+            else
+                echo " Incorrect password"
+            fi
+            ;;
+        4)
+            echo " Goodbye!"
+            break
+            ;;
+        *)
+            echo " Invalid choice. Please try again."
+            ;;
+    esac
+done
