@@ -1,4 +1,4 @@
-# 🧮 Student Grade System (Bash Script)
+# 🧮 Student Grade System 
 
 A simple terminal-based grading system written in Bash. This script allows users to input student marks, calculate averages, and assign grades based on predefined criteria. Designed for beginner-level Linux projects and compatible with online Bash compilers.
 
