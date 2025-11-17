@@ -1,0 +1,31 @@
+# 🧮 Student Grade System (Bash Script)
+
+A terminal-based grading system written in Bash, designed for simplicity, clarity, and impact. This project allows users to input student marks, calculate averages, assign grades, and manage records—all from the command line. Built for educational use and CLI-based project presentations.
+
+---
+
+## 🚀 Features
+
+- Add student details and calculate total, average, and grade
+- Display student summary in spreadsheet-style table
+- Save all entries to a CSV file (`grades.csv`)
+- View all student records in a formatted table
+- Search for a student by name
+- Password-protected admin access for viewing and searching
+- Clean, bilingual-ready structure for future localization
+
+---
+
+## 📦 Requirements
+
+- Bash shell (Linux, macOS, or online Bash compiler)
+- No external dependencies (no `bc`, no GUI tools)
+
+---
+
+## 🛠️ How to Run
+
+### Option 1: Local Terminal
+```bash
+chmod +x grade.sh
+./grade.sh
