@@ -1,4 +1,4 @@
-# 🧮 Student Grade System (Bash Script)
+#  Student Grade System (Bash Script)
 
 A terminal-based grading system written in Bash, designed for simplicity, clarity, and impact. This project allows users to input student marks, calculate averages, assign grades, and manage records—all from the command line. Built for educational use and CLI-based project presentations.
 
@@ -16,14 +16,14 @@ A terminal-based grading system written in Bash, designed for simplicity, clarit
 
 ---
 
-## 📦 Requirements
+##  Requirements
 
 - Bash shell (Linux, macOS, or online Bash compiler)
 - No external dependencies (no `bc`, no GUI tools)
 
 ---
 
-## 🛠️ How to Run
+##  How to Run
 
 ### Option 1: Local Terminal
 ```bash
